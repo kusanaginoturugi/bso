@@ -18,13 +18,10 @@
             }
         ]
     },
-    "sdkVersion": "3",
+    "sdkVersion": "2",
     "shortName": "BSO",
-    "targetPlatforms": [
-        "aplite",
-        "basalt"
-    ],
     "uuid": "b3065353-4f17-4e00-8e26-7b03159c4f33",
+    "versionCode": 1,
     "versionLabel": "1.0",
     "watchapp": {
         "watchface": false
