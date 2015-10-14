@@ -35,7 +35,7 @@ static void push(int type, int count)
       ball = 0;
       strike = 0;
       out = 0;
-      text_layer_set_text(timer_layer, "ElapsedTime: 0h:0m");      
+      text_layer_set_text(timer_layer, "Time: 0h:0m");      
     }
     for (int i = 0; i < MAX_TYPE; i++)
     {
@@ -259,7 +259,7 @@ static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
     int hours = s_uptime / 3600;
 
     // Update the TextLayer
-    snprintf(s_uptime_buffer, sizeof(s_uptime_buffer), "ElapsedTime: %dh %dm", hours, minutes);
+    snprintf(s_uptime_buffer, sizeof(s_uptime_buffer), "Time: %dh %dm", hours, minutes);
     text_layer_set_text(timer_layer, s_uptime_buffer);
 
     // Increment s_uptime
@@ -290,7 +290,7 @@ static void window_load(Window *window) {
   layer_add_child(window_layer, text_layer_get_layer(out_layer));
 
   timer_layer = text_layer_create((GRect) { .origin = { 0, 125 }, .size = { bounds.size.w, 30 } });
-  text_layer_set_text(timer_layer, "Play Ball >");
+  text_layer_set_text(timer_layer, "Play Ball >> ");
   text_layer_set_text_alignment(timer_layer, GTextAlignmentRight);
   text_layer_set_font(timer_layer, fonts_get_system_font(FONT_KEY_GOTHIC_18_BOLD));
   layer_add_child(window_layer, text_layer_get_layer(timer_layer));
