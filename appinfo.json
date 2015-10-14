@@ -1,0 +1,32 @@
+{
+    "appKeys": {
+        "dummy": 0
+    },
+    "capabilities": [
+        ""
+    ],
+    "companyName": "SHOEI WEB SERVICES",
+    "longName": "BSO for BaseBall Game",
+    "projectType": "native",
+    "resources": {
+        "media": [
+            {
+                "file": "images/homebase.png",
+                "menuIcon": true,
+                "name": "IMAGE_MENU_ICON",
+                "type": "png"
+            }
+        ]
+    },
+    "sdkVersion": "3",
+    "shortName": "BSO",
+    "targetPlatforms": [
+        "aplite",
+        "basalt"
+    ],
+    "uuid": "b3065353-4f17-4e00-8e26-7b03159c4f33",
+    "versionLabel": "1.0",
+    "watchapp": {
+        "watchface": false
+    }
+}
