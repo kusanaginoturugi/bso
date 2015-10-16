@@ -1,6 +1,14 @@
 #include <pebble.h>
 #define DELAY_MS 300
 
+#define TEXT_HEIGHT 40
+
+#ifdef PBL_PLATFORM_APLITE
+  #define TOP_MARGIN 5
+#else
+  #define TOP_MARGIN 20
+#endif
+
 static Window *window;
 static TextLayer *ball_layer;
 static TextLayer *strike_layer;
@@ -183,6 +191,14 @@ static void add_out()
   out++;
   push(2, out);
   show_out();
+
+  strike = 0;
+  history[1][history_count] = strike;
+  show_strike();
+
+  ball = 0;
+  history[0][history_count] = ball;
+  show_ball();
 }
 
 static void threeout_change()
@@ -271,27 +287,27 @@ static void window_load(Window *window) {
   Layer *window_layer = window_get_root_layer(window);
   GRect bounds = layer_get_bounds(window_layer);
 
-  ball_layer = text_layer_create((GRect) { .origin = { 0, 5 }, .size = { bounds.size.w, 40 } });
+  ball_layer = text_layer_create((GRect) { .origin = { 0, TOP_MARGIN }, .size = { bounds.size.w, TEXT_HEIGHT } });
   text_layer_set_text(ball_layer, "");
   text_layer_set_text_alignment(ball_layer, GTextAlignmentCenter);
   text_layer_set_font(ball_layer, fonts_get_system_font(FONT_KEY_BITHAM_30_BLACK));
   layer_add_child(window_layer, text_layer_get_layer(ball_layer));
 
-  strike_layer = text_layer_create((GRect) { .origin = { 0, 45 }, .size = { bounds.size.w, 40 } });
+  strike_layer = text_layer_create((GRect) { .origin = { 0, TOP_MARGIN + TEXT_HEIGHT }, .size = { bounds.size.w, TEXT_HEIGHT } });
   text_layer_set_text(strike_layer, "B S O");
   text_layer_set_text_alignment(strike_layer, GTextAlignmentCenter);
   text_layer_set_font(strike_layer, fonts_get_system_font(FONT_KEY_BITHAM_30_BLACK));
   layer_add_child(window_layer, text_layer_get_layer(strike_layer));
 
-  out_layer = text_layer_create((GRect) { .origin = { 0, 85 }, .size = { bounds.size.w, 40 } });
+  out_layer = text_layer_create((GRect) { .origin = { 0, TOP_MARGIN + TEXT_HEIGHT * 2 }, .size = { bounds.size.w, TEXT_HEIGHT } });
   text_layer_set_text(out_layer, "");
   text_layer_set_text_alignment(out_layer, GTextAlignmentCenter);
   text_layer_set_font(out_layer, fonts_get_system_font(FONT_KEY_BITHAM_30_BLACK));
   layer_add_child(window_layer, text_layer_get_layer(out_layer));
 
-  timer_layer = text_layer_create((GRect) { .origin = { 0, 125 }, .size = { bounds.size.w, 30 } });
-  text_layer_set_text(timer_layer, "Play Ball >> ");
-  text_layer_set_text_alignment(timer_layer, GTextAlignmentRight);
+  timer_layer = text_layer_create((GRect) { .origin = { 0, TOP_MARGIN + TEXT_HEIGHT * 3 }, .size = { bounds.size.w, 30 } });
+  text_layer_set_text(timer_layer, "   Play Ball >> ");
+  text_layer_set_text_alignment(timer_layer, GTextAlignmentCenter);
   text_layer_set_font(timer_layer, fonts_get_system_font(FONT_KEY_GOTHIC_18_BOLD));
   layer_add_child(window_layer, text_layer_get_layer(timer_layer));
 
