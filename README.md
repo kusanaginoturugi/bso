@@ -4,10 +4,10 @@
 
 This Pebble app tracks balls, strikes, outs.
 
-[Back] to redo.
-[Up] to increase balls.
-[Select] to increase strikes.
-[Down] to increase outs.
+- [Back] to redo.
+- [Up] to increase balls.
+- [Select] to increase strikes.
+- [Down] to increase outs.
 
 When you press the [Back] button long to exit the application .
 
