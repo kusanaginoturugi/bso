@@ -13,11 +13,13 @@ static Window *window;
 static TextLayer *ball_layer;
 static TextLayer *strike_layer;
 static TextLayer *out_layer;
+static TextLayer *inning_layer;
 static TextLayer *timer_layer;
 
 static int ball;
 static int strike;
 static int out;
+static int inning_count = 0; /* 0,1->1 2,3->2 4,5->3 6,7->4 8,9->5 10,11->6 12,13->7 14,15->8 16,17->9 18,19->10 */
 
 static int history_count = 0;
 #define MAX_TYPE    3
@@ -26,13 +28,52 @@ static int history[3][MAX_HISTORY];
 
 static int s_uptime = 0;
 
-/* プロトタイプ宣言 */
+static char inning_s[10] = "top 1st";
+
+/* Function Prototype */
 static void show_ball();
 static void show_strike();
 static void show_out();
 static void four_ball();
 static void struck_out();
 static void threeout_change();
+static void update_textlayer();
+
+static char* get_inning_string()
+{
+  int inning = inning_count / 2 + 1;
+  switch (inning) {
+  case 1:
+    if (inning_count % 2 == 0) {
+      snprintf(inning_s, sizeof(inning_s), "top %dst", inning);      
+    } else {
+      snprintf(inning_s, sizeof(inning_s), "end %dst", inning);      
+    }
+    break;
+  case 2:
+    if (inning_count % 2 == 0) {
+      snprintf(inning_s, sizeof(inning_s), "top %dnd", inning);      
+    } else {
+      snprintf(inning_s, sizeof(inning_s), "end %dnd", inning);      
+    }
+    break;
+  case 3:
+    if (inning_count % 2 == 0) {
+      snprintf(inning_s, sizeof(inning_s), "top %drd", inning);      
+    } else {
+      snprintf(inning_s, sizeof(inning_s), "end %drd", inning);      
+    }
+    break;
+  default:
+    if (inning_count % 2 == 0) {
+      snprintf(inning_s, sizeof(inning_s), "top %dth", inning);      
+    } else {
+      snprintf(inning_s, sizeof(inning_s), "end %dth", inning);      
+    }
+    break;
+  }
+  return inning_s;
+}
 
 static void push(int type, int count)
 {
@@ -43,7 +84,8 @@ static void push(int type, int count)
       ball = 0;
       strike = 0;
       out = 0;
-      text_layer_set_text(timer_layer, "Time: 0h:0m");      
+      text_layer_set_text(timer_layer, "Time: 0h:0m");
+      update_textlayer();    
     }
     for (int i = 0; i < MAX_TYPE; i++)
     {
@@ -215,6 +257,8 @@ static void threeout_change()
   history[2][history_count] = out;
 
   history_count = 0;
+  inning_count++;
+  update_textlayer();
 }
 
 static void back_click_handler(ClickRecognizerRef recognizer, void *context) {
@@ -241,30 +285,14 @@ static void down_click_handler(ClickRecognizerRef recognizer, void *context) {
   add_out();
 }
 
-/* static void back_long_click_handler(ClickRecognizerRef recognizer, void *context) { */
-/* } */
-
-/* static void up_long_click_handler(ClickRecognizerRef recognizer, void *context) { */
-/* } */
-
-/* static void select_long_click_handler(ClickRecognizerRef recognizer, void *context) { */
-/* } */
-
-/* static void down_long_click_handler(ClickRecognizerRef recognizer, void *context) { */
-/* } */
-
 static void click_config_provider(void *context) {
   window_single_click_subscribe(BUTTON_ID_BACK, back_click_handler);
   window_single_click_subscribe(BUTTON_ID_UP, up_click_handler);
   window_single_click_subscribe(BUTTON_ID_SELECT, select_click_handler);
   window_single_click_subscribe(BUTTON_ID_DOWN, down_click_handler);
-  /* window_long_click_subscribe(BUTTON_ID_BACK,   DELAY_MS, NULL, back_long_click_handler); */
-  /* window_long_click_subscribe(BUTTON_ID_UP,     DELAY_MS, NULL, up_long_click_handler); */
-  /* window_long_click_subscribe(BUTTON_ID_SELECT, DELAY_MS, NULL, select_long_click_handler); */
-  /* window_long_click_subscribe(BUTTON_ID_DOWN,   DELAY_MS, NULL, down_long_click_handler); */
 }
 
-static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
+static void update_textlayer() {
   if (s_uptime > 0) {
     // Use a long-lived buffer
     static char s_uptime_buffer[32];
@@ -278,14 +306,27 @@ static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
     snprintf(s_uptime_buffer, sizeof(s_uptime_buffer), "Time: %dh %dm", hours, minutes);
     text_layer_set_text(timer_layer, s_uptime_buffer);
 
-    // Increment s_uptime
-    s_uptime += 60;
+    get_inning_string();
+    text_layer_set_text(inning_layer, inning_s);
   }
+}
+
+static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
+  update_textlayer();
+
+  // Increment s_uptime
+  s_uptime += 60;
 }
 
 static void window_load(Window *window) {
   Layer *window_layer = window_get_root_layer(window);
   GRect bounds = layer_get_bounds(window_layer);
+
+  inning_layer = text_layer_create((GRect) { .origin = { 0, 0 }, .size = { bounds.size.w, 20 } });
+  text_layer_set_text(inning_layer, "");
+  text_layer_set_text_alignment(inning_layer, GTextAlignmentCenter);
+  text_layer_set_font(inning_layer, fonts_get_system_font(FONT_KEY_GOTHIC_18_BOLD));
+  layer_add_child(window_layer, text_layer_get_layer(inning_layer));
 
   ball_layer = text_layer_create((GRect) { .origin = { 0, TOP_MARGIN }, .size = { bounds.size.w, TEXT_HEIGHT } });
   text_layer_set_text(ball_layer, "");
@@ -311,9 +352,9 @@ static void window_load(Window *window) {
   text_layer_set_font(timer_layer, fonts_get_system_font(FONT_KEY_GOTHIC_18_BOLD));
   layer_add_child(window_layer, text_layer_get_layer(timer_layer));
 
-  ball       = 0;
-  strike     = 0;
-  out        = 0;
+  ball         = 0;
+  strike       = 0;
+  out          = 0;
 }
 
 static void window_unload(Window *window) {
@@ -321,6 +362,7 @@ static void window_unload(Window *window) {
   text_layer_destroy(strike_layer);
   text_layer_destroy(out_layer);
   text_layer_destroy(timer_layer);
+  text_layer_destroy(inning_layer);
 }
 
 static void init(void) {
