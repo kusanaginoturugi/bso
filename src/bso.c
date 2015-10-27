@@ -37,7 +37,7 @@ static char* get_inning_string()
   return inning_s;
 }
 
-static void push(int type, int count)
+static void count_up(int type, int count)
 {
   history_count++;
   if (history_count == 1) {
@@ -46,24 +46,23 @@ static void push(int type, int count)
       ball = 0;
       strike = 0;
       out = 0;
-      text_layer_set_text(timer_layer, "Time: 0h:0m");
-      update_textlayer();
     }
-    for (int i = 0; i < MAX_TYPE; i++)
-    {
-        history[i][0] = history[i][0];
+    for (int i = 0; i < MAX_TYPE; i++) {
+      history[i][history_count] = 0;
     }
-    show_ball();
-    show_strike();
-    show_out();
+  } else {
+    if (history_count >= MAX_HISTORY) {
+      history_count = 1;
+    }
+    for (int i = 0; i < MAX_TYPE; i++) {
+      history[i][history_count] = history[i][history_count - 1];
+    }
+    history[type][history_count] = count;
   }
-  if (history_count == 101) {
-    history_count = 1;
-  }
-  for (int i = 0; i < MAX_TYPE; i++) {
-    history[i][history_count] = history[i][history_count - 1];
-  }
-  history[type][history_count] = count;
+  update_textlayer();
+  show_ball();
+  show_strike();
+  show_out();
 }
 
 static void show_ball()
@@ -100,8 +99,7 @@ static void show_ball()
 static void add_ball()
 {
   ball++;
-  push(0, ball);
-  show_ball();
+  count_up(0, ball);
 }
 
 static void show_strike()
@@ -135,8 +133,7 @@ static void show_strike()
 static void add_strike()
 {
   strike++;
-  push(1, strike);
-  show_strike();
+  count_up(1, strike);
 }
 
 static void four_ball()
@@ -193,8 +190,7 @@ static void show_out()
 static void add_out()
 {
   out++;
-  push(2, out);
-  show_out();
+  count_up(2, out);
 
   strike = 0;
   history[1][history_count] = strike;
@@ -218,13 +214,13 @@ static void threeout_change()
   out = 0;
   history[2][history_count] = out;
 
-  history_count = 0;
+  history_count = 1;
   inning_count++;
   update_textlayer();
 }
 
 static void back_click_handler(ClickRecognizerRef recognizer, void *context) {
-  if (history_count > 0) {
+  if (history_count > 1) {
     history_count--;
     ball   = history[0][history_count];
     strike = history[1][history_count];
@@ -232,6 +228,7 @@ static void back_click_handler(ClickRecognizerRef recognizer, void *context) {
     show_ball();
     show_strike();
     show_out();
+    update_textlayer();
   }
 }
 
@@ -255,29 +252,29 @@ static void click_config_provider(void *context) {
 }
 
 static void update_textlayer() {
-  if (s_uptime > 0) {
-    // Use a long-lived buffer
-    static char s_uptime_buffer[32];
+  // Use a long-lived buffer
+  static char s_uptime_buffer[32];
 
-    // Get time since launch
-    //int seconds = s_uptime % 60;
-    int minutes = (s_uptime % 3600) / 60;
-    int hours = s_uptime / 3600;
+  // Get time since launch
+  //int seconds = s_uptime % 60;
+  int minutes = (s_uptime % 3600) / 60;
+  int hours = s_uptime / 3600;
 
-    // Update the TextLayer
-    snprintf(s_uptime_buffer, sizeof(s_uptime_buffer), "Time: %dh %dm", hours, minutes);
-    text_layer_set_text(timer_layer, s_uptime_buffer);
+  // Update the TextLayer
+  snprintf(s_uptime_buffer, sizeof(s_uptime_buffer), "Time: %dh %dm", hours, minutes);
+  text_layer_set_text(timer_layer, s_uptime_buffer);
 
-    get_inning_string();
-    text_layer_set_text(inning_layer, inning_s);
-  }
+  get_inning_string();
+  text_layer_set_text(inning_layer, inning_s);
 }
 
 static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
-  update_textlayer();
+  if (s_uptime > 0) {
+    update_textlayer();
 
-  // Increment s_uptime
-  s_uptime += 60;
+    // Increment s_uptime
+    s_uptime += 60;
+  }
 }
 
 static void window_load(Window *window) {
@@ -308,15 +305,17 @@ static void window_load(Window *window) {
   text_layer_set_font(out_layer, fonts_get_system_font(FONT_KEY_BITHAM_30_BLACK));
   layer_add_child(window_layer, text_layer_get_layer(out_layer));
 
-  timer_layer = text_layer_create((GRect) { .origin = { 0, TOP_MARGIN + TEXT_HEIGHT * 3 }, .size = { bounds.size.w, 30 } });
+  timer_layer = text_layer_create((GRect) { .origin = { 0, TOP_MARGIN + TEXT_HEIGHT * 3 }, .size = { bounds.size.w, 20 } });
   text_layer_set_text(timer_layer, "   Play Ball >> ");
   text_layer_set_text_alignment(timer_layer, GTextAlignmentCenter);
   text_layer_set_font(timer_layer, fonts_get_system_font(FONT_KEY_GOTHIC_18_BOLD));
   layer_add_child(window_layer, text_layer_get_layer(timer_layer));
 
-  ball         = 0;
-  strike       = 0;
-  out          = 0;
+  ball          = 0;
+  strike        = 0;
+  out           = 0;
+  history_count = 0;
+  s_uptime      = 0;
 }
 
 static void window_unload(Window *window) {

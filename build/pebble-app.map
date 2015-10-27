@@ -769,175 +769,176 @@ LOAD /usr/lib/gcc/arm-none-eabi/5.2.0/armv7-m/crtn.o
  .note.gnu.build-id
                 0x0000000000000084       0x24 linker stubs
 
-.text           0x00000000000000a8      0xad5
+.text           0x00000000000000a8      0xab5
  *(.text)
  .text          0x00000000000000a8       0x14 /opt/pebble/Pebble/aplite/lib/libpebble.a(tmpvXKNpYpebble.o)
  *(.text.*)
  .text.update_textlayer
-                0x00000000000000bc      0x138 src/bso.c.18.o
- .text.tick_handler
-                0x00000000000001f4       0x18 src/bso.c.18.o
+                0x00000000000000bc      0x130 src/bso.c.18.o
  .text.window_unload
-                0x000000000000020c       0x4c src/bso.c.18.o
+                0x00000000000001ec       0x4c src/bso.c.18.o
  .text.window_load
-                0x0000000000000258      0x218 src/bso.c.18.o
+                0x0000000000000238      0x228 src/bso.c.18.o
  .text.click_config_provider
-                0x0000000000000470       0x40 src/bso.c.18.o
+                0x0000000000000460       0x40 src/bso.c.18.o
  .text.show_out
-                0x00000000000004b0       0xcc src/bso.c.18.o
+                0x00000000000004a0       0xd0 src/bso.c.18.o
  .text.show_strike
-                0x000000000000057c       0xbc src/bso.c.18.o
+                0x0000000000000570       0xbc src/bso.c.18.o
  .text.show_ball
-                0x0000000000000638       0xac src/bso.c.18.o
- .text.push     0x00000000000006e4       0xc4 src/bso.c.18.o
- .text.select_click_handler
-                0x00000000000007a8       0x20 src/bso.c.18.o
- .text.up_click_handler
-                0x00000000000007c8       0x20 src/bso.c.18.o
+                0x000000000000062c       0xac src/bso.c.18.o
+ .text.count_up
+                0x00000000000006d8       0xb8 src/bso.c.18.o
  .text.down_click_handler
-                0x00000000000007e8       0x5c src/bso.c.18.o
+                0x0000000000000790       0x58 src/bso.c.18.o
+ .text.select_click_handler
+                0x00000000000007e8       0x14 src/bso.c.18.o
+ .text.up_click_handler
+                0x00000000000007fc       0x14 src/bso.c.18.o
  .text.back_click_handler
-                0x0000000000000844       0x60 src/bso.c.18.o
+                0x0000000000000810       0x64 src/bso.c.18.o
+ .text.tick_handler
+                0x0000000000000874       0x1c src/bso.c.18.o
  .text.startup.main
-                0x00000000000008a4       0x90 src/bso.c.18.o
-                0x00000000000008a4                main
+                0x0000000000000890       0x90 src/bso.c.18.o
+                0x0000000000000890                main
  .text.app_event_loop
-                0x0000000000000934        0xc /opt/pebble/Pebble/aplite/lib/libpebble.a(tmpvXKNpYpebble.o)
-                0x0000000000000934                app_event_loop
- .text.app_log  0x0000000000000940        0xc /opt/pebble/Pebble/aplite/lib/libpebble.a(tmpvXKNpYpebble.o)
-                0x0000000000000940                app_log
+                0x0000000000000920        0xc /opt/pebble/Pebble/aplite/lib/libpebble.a(tmpvXKNpYpebble.o)
+                0x0000000000000920                app_event_loop
+ .text.app_log  0x000000000000092c        0xc /opt/pebble/Pebble/aplite/lib/libpebble.a(tmpvXKNpYpebble.o)
+                0x000000000000092c                app_log
  .text.fonts_get_system_font
-                0x000000000000094c        0xc /opt/pebble/Pebble/aplite/lib/libpebble.a(tmpvXKNpYpebble.o)
-                0x000000000000094c                fonts_get_system_font
+                0x0000000000000938        0xc /opt/pebble/Pebble/aplite/lib/libpebble.a(tmpvXKNpYpebble.o)
+                0x0000000000000938                fonts_get_system_font
  .text.layer_add_child
-                0x0000000000000958        0xc /opt/pebble/Pebble/aplite/lib/libpebble.a(tmpvXKNpYpebble.o)
-                0x0000000000000958                layer_add_child
+                0x0000000000000944        0xc /opt/pebble/Pebble/aplite/lib/libpebble.a(tmpvXKNpYpebble.o)
+                0x0000000000000944                layer_add_child
  .text.layer_get_bounds
-                0x0000000000000964        0xc /opt/pebble/Pebble/aplite/lib/libpebble.a(tmpvXKNpYpebble.o)
-                0x0000000000000964                layer_get_bounds
- .text.memset   0x0000000000000970        0xc /opt/pebble/Pebble/aplite/lib/libpebble.a(tmpvXKNpYpebble.o)
-                0x0000000000000970                memset
+                0x0000000000000950        0xc /opt/pebble/Pebble/aplite/lib/libpebble.a(tmpvXKNpYpebble.o)
+                0x0000000000000950                layer_get_bounds
+ .text.memset   0x000000000000095c        0xc /opt/pebble/Pebble/aplite/lib/libpebble.a(tmpvXKNpYpebble.o)
+                0x000000000000095c                memset
  .text.snprintf
-                0x000000000000097c        0xc /opt/pebble/Pebble/aplite/lib/libpebble.a(tmpvXKNpYpebble.o)
-                0x000000000000097c                snprintf
+                0x0000000000000968        0xc /opt/pebble/Pebble/aplite/lib/libpebble.a(tmpvXKNpYpebble.o)
+                0x0000000000000968                snprintf
  .text.text_layer_create
-                0x0000000000000988        0xc /opt/pebble/Pebble/aplite/lib/libpebble.a(tmpvXKNpYpebble.o)
-                0x0000000000000988                text_layer_create
+                0x0000000000000974        0xc /opt/pebble/Pebble/aplite/lib/libpebble.a(tmpvXKNpYpebble.o)
+                0x0000000000000974                text_layer_create
  .text.text_layer_destroy
-                0x0000000000000994        0xc /opt/pebble/Pebble/aplite/lib/libpebble.a(tmpvXKNpYpebble.o)
-                0x0000000000000994                text_layer_destroy
+                0x0000000000000980        0xc /opt/pebble/Pebble/aplite/lib/libpebble.a(tmpvXKNpYpebble.o)
+                0x0000000000000980                text_layer_destroy
  .text.text_layer_get_layer
-                0x00000000000009a0        0xc /opt/pebble/Pebble/aplite/lib/libpebble.a(tmpvXKNpYpebble.o)
-                0x00000000000009a0                text_layer_get_layer
+                0x000000000000098c        0xc /opt/pebble/Pebble/aplite/lib/libpebble.a(tmpvXKNpYpebble.o)
+                0x000000000000098c                text_layer_get_layer
  .text.text_layer_set_font
-                0x00000000000009ac        0xc /opt/pebble/Pebble/aplite/lib/libpebble.a(tmpvXKNpYpebble.o)
-                0x00000000000009ac                text_layer_set_font
+                0x0000000000000998        0xc /opt/pebble/Pebble/aplite/lib/libpebble.a(tmpvXKNpYpebble.o)
+                0x0000000000000998                text_layer_set_font
  .text.text_layer_set_text
-                0x00000000000009b8        0xc /opt/pebble/Pebble/aplite/lib/libpebble.a(tmpvXKNpYpebble.o)
-                0x00000000000009b8                text_layer_set_text
+                0x00000000000009a4        0xc /opt/pebble/Pebble/aplite/lib/libpebble.a(tmpvXKNpYpebble.o)
+                0x00000000000009a4                text_layer_set_text
  .text.text_layer_set_text_alignment
-                0x00000000000009c4        0xc /opt/pebble/Pebble/aplite/lib/libpebble.a(tmpvXKNpYpebble.o)
-                0x00000000000009c4                text_layer_set_text_alignment
+                0x00000000000009b0        0xc /opt/pebble/Pebble/aplite/lib/libpebble.a(tmpvXKNpYpebble.o)
+                0x00000000000009b0                text_layer_set_text_alignment
  .text.tick_timer_service_subscribe
-                0x00000000000009d0        0xc /opt/pebble/Pebble/aplite/lib/libpebble.a(tmpvXKNpYpebble.o)
-                0x00000000000009d0                tick_timer_service_subscribe
+                0x00000000000009bc        0xc /opt/pebble/Pebble/aplite/lib/libpebble.a(tmpvXKNpYpebble.o)
+                0x00000000000009bc                tick_timer_service_subscribe
  .text.vibes_short_pulse
-                0x00000000000009dc        0xc /opt/pebble/Pebble/aplite/lib/libpebble.a(tmpvXKNpYpebble.o)
-                0x00000000000009dc                vibes_short_pulse
+                0x00000000000009c8        0xc /opt/pebble/Pebble/aplite/lib/libpebble.a(tmpvXKNpYpebble.o)
+                0x00000000000009c8                vibes_short_pulse
  .text.window_create
-                0x00000000000009e8        0xc /opt/pebble/Pebble/aplite/lib/libpebble.a(tmpvXKNpYpebble.o)
-                0x00000000000009e8                window_create
+                0x00000000000009d4        0xc /opt/pebble/Pebble/aplite/lib/libpebble.a(tmpvXKNpYpebble.o)
+                0x00000000000009d4                window_create
  .text.window_destroy
-                0x00000000000009f4        0xc /opt/pebble/Pebble/aplite/lib/libpebble.a(tmpvXKNpYpebble.o)
-                0x00000000000009f4                window_destroy
+                0x00000000000009e0        0xc /opt/pebble/Pebble/aplite/lib/libpebble.a(tmpvXKNpYpebble.o)
+                0x00000000000009e0                window_destroy
  .text.window_get_root_layer
-                0x0000000000000a00        0xc /opt/pebble/Pebble/aplite/lib/libpebble.a(tmpvXKNpYpebble.o)
-                0x0000000000000a00                window_get_root_layer
+                0x00000000000009ec        0xc /opt/pebble/Pebble/aplite/lib/libpebble.a(tmpvXKNpYpebble.o)
+                0x00000000000009ec                window_get_root_layer
  .text.window_set_click_config_provider
-                0x0000000000000a0c        0xc /opt/pebble/Pebble/aplite/lib/libpebble.a(tmpvXKNpYpebble.o)
-                0x0000000000000a0c                window_set_click_config_provider
+                0x00000000000009f8        0xc /opt/pebble/Pebble/aplite/lib/libpebble.a(tmpvXKNpYpebble.o)
+                0x00000000000009f8                window_set_click_config_provider
  .text.window_set_window_handlers
-                0x0000000000000a18        0xc /opt/pebble/Pebble/aplite/lib/libpebble.a(tmpvXKNpYpebble.o)
-                0x0000000000000a18                window_set_window_handlers
+                0x0000000000000a04        0xc /opt/pebble/Pebble/aplite/lib/libpebble.a(tmpvXKNpYpebble.o)
+                0x0000000000000a04                window_set_window_handlers
  .text.window_stack_push
-                0x0000000000000a24        0xc /opt/pebble/Pebble/aplite/lib/libpebble.a(tmpvXKNpYpebble.o)
-                0x0000000000000a24                window_stack_push
+                0x0000000000000a10        0xc /opt/pebble/Pebble/aplite/lib/libpebble.a(tmpvXKNpYpebble.o)
+                0x0000000000000a10                window_stack_push
  .text.window_single_click_subscribe
-                0x0000000000000a30        0xc /opt/pebble/Pebble/aplite/lib/libpebble.a(tmpvXKNpYpebble.o)
-                0x0000000000000a30                window_single_click_subscribe
+                0x0000000000000a1c        0xc /opt/pebble/Pebble/aplite/lib/libpebble.a(tmpvXKNpYpebble.o)
+                0x0000000000000a1c                window_single_click_subscribe
  *(.rodata)
  *(.rodata*)
  .rodata.str1.1
-                0x0000000000000a3c      0x141 src/bso.c.18.o
-                                        0x142 (size before relaxing)
+                0x0000000000000a28      0x135 src/bso.c.18.o
+                                        0x136 (size before relaxing)
 
-.glue_7         0x0000000000000b80        0x0
- .glue_7        0x0000000000000b80        0x0 linker stubs
+.glue_7         0x0000000000000b60        0x0
+ .glue_7        0x0000000000000b60        0x0 linker stubs
 
-.glue_7t        0x0000000000000b80        0x0
- .glue_7t       0x0000000000000b80        0x0 linker stubs
+.glue_7t        0x0000000000000b60        0x0
+ .glue_7t       0x0000000000000b60        0x0 linker stubs
 
-.vfp11_veneer   0x0000000000000b80        0x0
- .vfp11_veneer  0x0000000000000b80        0x0 linker stubs
+.vfp11_veneer   0x0000000000000b60        0x0
+ .vfp11_veneer  0x0000000000000b60        0x0 linker stubs
 
-.v4_bx          0x0000000000000b80        0x0
- .v4_bx         0x0000000000000b80        0x0 linker stubs
+.v4_bx          0x0000000000000b60        0x0
+ .v4_bx         0x0000000000000b60        0x0 linker stubs
 
-.iplt           0x0000000000000b80        0x0
- .iplt          0x0000000000000b80        0x0 /usr/lib/gcc/arm-none-eabi/5.2.0/armv7-m/crtbegin.o
+.iplt           0x0000000000000b60        0x0
+ .iplt          0x0000000000000b60        0x0 /usr/lib/gcc/arm-none-eabi/5.2.0/armv7-m/crtbegin.o
 
-.rel.dyn        0x0000000000000b80        0x0
- .rel.iplt      0x0000000000000b80        0x0 /usr/lib/gcc/arm-none-eabi/5.2.0/armv7-m/crtbegin.o
+.rel.dyn        0x0000000000000b60        0x0
+ .rel.iplt      0x0000000000000b60        0x0 /usr/lib/gcc/arm-none-eabi/5.2.0/armv7-m/crtbegin.o
 
-.data           0x0000000000000b7d        0xa
+.data           0x0000000000000b5d        0xa
  *(.data)
- .data          0x0000000000000b7d        0x0 /usr/lib/gcc/arm-none-eabi/5.2.0/armv7-m/crti.o
- .data          0x0000000000000b7d        0x0 /usr/lib/gcc/arm-none-eabi/5.2.0/armv7-m/crtbegin.o
- .data          0x0000000000000b7d        0x0 /usr/lib/gcc/arm-none-eabi/5.2.0/../../../../arm-none-eabi/lib/armv7-m/crt0.o
- .data          0x0000000000000b7d        0x0 src/bso.c.18.o
- .data          0x0000000000000b7d        0x0 aplite/appinfo.auto.c.18.o
- .data          0x0000000000000b7d        0x0 /opt/pebble/Pebble/aplite/lib/libpebble.a(tmpvXKNpYpebble.o)
- .data          0x0000000000000b7d        0x0 /usr/lib/gcc/arm-none-eabi/5.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-atexit.o)
- .data          0x0000000000000b7d        0x0 /usr/lib/gcc/arm-none-eabi/5.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-exit.o)
- .data          0x0000000000000b7d        0x0 /usr/lib/gcc/arm-none-eabi/5.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-fini.o)
- .data          0x0000000000000b7d        0x0 /usr/lib/gcc/arm-none-eabi/5.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-impure.o)
- .data          0x0000000000000b7d        0x0 /usr/lib/gcc/arm-none-eabi/5.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-init.o)
- .data          0x0000000000000b7d        0x0 /usr/lib/gcc/arm-none-eabi/5.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-__atexit.o)
- .data          0x0000000000000b7d        0x0 /usr/lib/gcc/arm-none-eabi/5.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-__call_atexit.o)
- .data          0x0000000000000b7d        0x0 /usr/lib/gcc/arm-none-eabi/5.2.0/armv7-m/crtend.o
- .data          0x0000000000000b7d        0x0 /usr/lib/gcc/arm-none-eabi/5.2.0/armv7-m/crtn.o
+ .data          0x0000000000000b5d        0x0 /usr/lib/gcc/arm-none-eabi/5.2.0/armv7-m/crti.o
+ .data          0x0000000000000b5d        0x0 /usr/lib/gcc/arm-none-eabi/5.2.0/armv7-m/crtbegin.o
+ .data          0x0000000000000b5d        0x0 /usr/lib/gcc/arm-none-eabi/5.2.0/../../../../arm-none-eabi/lib/armv7-m/crt0.o
+ .data          0x0000000000000b5d        0x0 src/bso.c.18.o
+ .data          0x0000000000000b5d        0x0 aplite/appinfo.auto.c.18.o
+ .data          0x0000000000000b5d        0x0 /opt/pebble/Pebble/aplite/lib/libpebble.a(tmpvXKNpYpebble.o)
+ .data          0x0000000000000b5d        0x0 /usr/lib/gcc/arm-none-eabi/5.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-atexit.o)
+ .data          0x0000000000000b5d        0x0 /usr/lib/gcc/arm-none-eabi/5.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-exit.o)
+ .data          0x0000000000000b5d        0x0 /usr/lib/gcc/arm-none-eabi/5.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-fini.o)
+ .data          0x0000000000000b5d        0x0 /usr/lib/gcc/arm-none-eabi/5.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-impure.o)
+ .data          0x0000000000000b5d        0x0 /usr/lib/gcc/arm-none-eabi/5.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-init.o)
+ .data          0x0000000000000b5d        0x0 /usr/lib/gcc/arm-none-eabi/5.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-__atexit.o)
+ .data          0x0000000000000b5d        0x0 /usr/lib/gcc/arm-none-eabi/5.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-__call_atexit.o)
+ .data          0x0000000000000b5d        0x0 /usr/lib/gcc/arm-none-eabi/5.2.0/armv7-m/crtend.o
+ .data          0x0000000000000b5d        0x0 /usr/lib/gcc/arm-none-eabi/5.2.0/armv7-m/crtn.o
  *(.data.*)
  .data.inning_s
-                0x0000000000000b7d        0xa src/bso.c.18.o
+                0x0000000000000b5d        0xa src/bso.c.18.o
 
-.igot.plt       0x0000000000000b88        0x0
- .igot.plt      0x0000000000000b88        0x0 /usr/lib/gcc/arm-none-eabi/5.2.0/armv7-m/crtbegin.o
+.igot.plt       0x0000000000000b68        0x0
+ .igot.plt      0x0000000000000b68        0x0 /usr/lib/gcc/arm-none-eabi/5.2.0/armv7-m/crtbegin.o
 
-.bss            0x0000000000000b88      0x500
+.bss            0x0000000000000b68      0x500
  *(.bss)
  *(.bss.*)
- .bss.window    0x0000000000000b88        0x4 src/bso.c.18.o
+ .bss.window    0x0000000000000b68        0x4 src/bso.c.18.o
  .bss.s_uptime_buffer.7034
-                0x0000000000000b8c       0x20 src/bso.c.18.o
- .bss.history   0x0000000000000bac      0x4b0 src/bso.c.18.o
+                0x0000000000000b6c       0x20 src/bso.c.18.o
+ .bss.history   0x0000000000000b8c      0x4b0 src/bso.c.18.o
  .bss.strike_layer
-                0x000000000000105c        0x4 src/bso.c.18.o
+                0x000000000000103c        0x4 src/bso.c.18.o
  .bss.inning_layer
-                0x0000000000001060        0x4 src/bso.c.18.o
- .bss.s_uptime  0x0000000000001064        0x4 src/bso.c.18.o
- .bss.strike    0x0000000000001068        0x4 src/bso.c.18.o
- .bss.ball      0x000000000000106c        0x4 src/bso.c.18.o
+                0x0000000000001040        0x4 src/bso.c.18.o
+ .bss.s_uptime  0x0000000000001044        0x4 src/bso.c.18.o
+ .bss.strike    0x0000000000001048        0x4 src/bso.c.18.o
+ .bss.ball      0x000000000000104c        0x4 src/bso.c.18.o
  .bss.timer_layer
-                0x0000000000001070        0x4 src/bso.c.18.o
+                0x0000000000001050        0x4 src/bso.c.18.o
  .bss.out_layer
-                0x0000000000001074        0x4 src/bso.c.18.o
- .bss.out       0x0000000000001078        0x4 src/bso.c.18.o
+                0x0000000000001054        0x4 src/bso.c.18.o
+ .bss.out       0x0000000000001058        0x4 src/bso.c.18.o
  .bss.inning_count
-                0x000000000000107c        0x4 src/bso.c.18.o
+                0x000000000000105c        0x4 src/bso.c.18.o
  .bss.history_count
-                0x0000000000001080        0x4 src/bso.c.18.o
+                0x0000000000001060        0x4 src/bso.c.18.o
  .bss.ball_layer
-                0x0000000000001084        0x4 src/bso.c.18.o
+                0x0000000000001064        0x4 src/bso.c.18.o
 
 DISCARD
  libc.a(*)
@@ -984,16 +985,16 @@ OUTPUT(/home/onoue/dev/pebble/bso/build/aplite/pebble-app.elf elf32-littlearm)
                                          0x1e (size before relaxing)
  .comment       0x000000000000001d       0x1e aplite/appinfo.auto.c.18.o
 
-.debug_info     0x0000000000000000     0x1101
- .debug_info    0x0000000000000000      0xe1d src/bso.c.18.o
- .debug_info    0x0000000000000e1d      0x2e4 aplite/appinfo.auto.c.18.o
+.debug_info     0x0000000000000000     0x1125
+ .debug_info    0x0000000000000000      0xe41 src/bso.c.18.o
+ .debug_info    0x0000000000000e41      0x2e4 aplite/appinfo.auto.c.18.o
 
-.debug_abbrev   0x0000000000000000      0x398
- .debug_abbrev  0x0000000000000000      0x2f8 src/bso.c.18.o
- .debug_abbrev  0x00000000000002f8       0xa0 aplite/appinfo.auto.c.18.o
+.debug_abbrev   0x0000000000000000      0x3b2
+ .debug_abbrev  0x0000000000000000      0x312 src/bso.c.18.o
+ .debug_abbrev  0x0000000000000312       0xa0 aplite/appinfo.auto.c.18.o
 
-.debug_loc      0x0000000000000000      0x416
- .debug_loc     0x0000000000000000      0x416 src/bso.c.18.o
+.debug_loc      0x0000000000000000      0x496
+ .debug_loc     0x0000000000000000      0x496 src/bso.c.18.o
 
 .debug_aranges  0x0000000000000000       0xa0
  .debug_aranges
@@ -1001,24 +1002,24 @@ OUTPUT(/home/onoue/dev/pebble/bso/build/aplite/pebble-app.elf elf32-littlearm)
  .debug_aranges
                 0x0000000000000088       0x18 aplite/appinfo.auto.c.18.o
 
-.debug_ranges   0x0000000000000000       0xe0
- .debug_ranges  0x0000000000000000       0xe0 src/bso.c.18.o
+.debug_ranges   0x0000000000000000       0x98
+ .debug_ranges  0x0000000000000000       0x98 src/bso.c.18.o
 
-.debug_line     0x0000000000000000      0x454
- .debug_line    0x0000000000000000      0x35e src/bso.c.18.o
- .debug_line    0x000000000000035e       0xf6 aplite/appinfo.auto.c.18.o
+.debug_line     0x0000000000000000      0x43a
+ .debug_line    0x0000000000000000      0x344 src/bso.c.18.o
+ .debug_line    0x0000000000000344       0xf6 aplite/appinfo.auto.c.18.o
 
-.debug_str      0x0000000000000000      0x846
- .debug_str     0x0000000000000000      0x668 src/bso.c.18.o
-                                        0x705 (size before relaxing)
- .debug_str     0x0000000000000668      0x1de aplite/appinfo.auto.c.18.o
+.debug_str      0x0000000000000000      0x84f
+ .debug_str     0x0000000000000000      0x671 src/bso.c.18.o
+                                        0x709 (size before relaxing)
+ .debug_str     0x0000000000000671      0x1de aplite/appinfo.auto.c.18.o
                                         0x30b (size before relaxing)
 
-.debug_frame    0x0000000000000000      0x308
- .debug_frame   0x0000000000000000      0x1dc src/bso.c.18.o
- .debug_frame   0x00000000000001dc       0x20 /usr/lib/gcc/arm-none-eabi/5.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-atexit.o)
- .debug_frame   0x00000000000001fc       0x28 /usr/lib/gcc/arm-none-eabi/5.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-exit.o)
- .debug_frame   0x0000000000000224       0x34 /usr/lib/gcc/arm-none-eabi/5.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-fini.o)
- .debug_frame   0x0000000000000258       0x2c /usr/lib/gcc/arm-none-eabi/5.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-init.o)
- .debug_frame   0x0000000000000284       0x34 /usr/lib/gcc/arm-none-eabi/5.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-__atexit.o)
- .debug_frame   0x00000000000002b8       0x50 /usr/lib/gcc/arm-none-eabi/5.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-__call_atexit.o)
+.debug_frame    0x0000000000000000      0x2f0
+ .debug_frame   0x0000000000000000      0x1c4 src/bso.c.18.o
+ .debug_frame   0x00000000000001c4       0x20 /usr/lib/gcc/arm-none-eabi/5.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-atexit.o)
+ .debug_frame   0x00000000000001e4       0x28 /usr/lib/gcc/arm-none-eabi/5.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-exit.o)
+ .debug_frame   0x000000000000020c       0x34 /usr/lib/gcc/arm-none-eabi/5.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-fini.o)
+ .debug_frame   0x0000000000000240       0x2c /usr/lib/gcc/arm-none-eabi/5.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-init.o)
+ .debug_frame   0x000000000000026c       0x34 /usr/lib/gcc/arm-none-eabi/5.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-__atexit.o)
+ .debug_frame   0x00000000000002a0       0x50 /usr/lib/gcc/arm-none-eabi/5.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-__call_atexit.o)

@@ -1,10 +1,10 @@
 #define DELAY_MS    300
-#define TEXT_HEIGHT 40
+#define TEXT_HEIGHT 35
 #define MAX_TYPE    3
 #define MAX_HISTORY 100
 
 #ifdef PBL_PLATFORM_APLITE
-  #define TOP_MARGIN 5
+  #define TOP_MARGIN 20
 #else
   #define TOP_MARGIN 20
 #endif
