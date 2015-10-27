@@ -1,43 +1,5 @@
 #include <pebble.h>
-#define DELAY_MS 300
-
-#define TEXT_HEIGHT 40
-
-#ifdef PBL_PLATFORM_APLITE
-  #define TOP_MARGIN 5
-#else
-  #define TOP_MARGIN 20
-#endif
-
-static Window *window;
-static TextLayer *ball_layer;
-static TextLayer *strike_layer;
-static TextLayer *out_layer;
-static TextLayer *inning_layer;
-static TextLayer *timer_layer;
-
-static int ball;
-static int strike;
-static int out;
-static int inning_count = 0; /* 0,1->1 2,3->2 4,5->3 6,7->4 8,9->5 10,11->6 12,13->7 14,15->8 16,17->9 18,19->10 */
-
-static int history_count = 0;
-#define MAX_TYPE    3
-#define MAX_HISTORY 100
-static int history[3][MAX_HISTORY];
-
-static int s_uptime = 0;
-
-static char inning_s[10] = "top 1st";
-
-/* Function Prototype */
-static void show_ball();
-static void show_strike();
-static void show_out();
-static void four_ball();
-static void struck_out();
-static void threeout_change();
-static void update_textlayer();
+#include <bso.h>
 
 static char* get_inning_string()
 {
@@ -45,30 +7,30 @@ static char* get_inning_string()
   switch (inning) {
   case 1:
     if (inning_count % 2 == 0) {
-      snprintf(inning_s, sizeof(inning_s), "top %dst", inning);      
+      snprintf(inning_s, sizeof(inning_s), "top %dst", inning);
     } else {
-      snprintf(inning_s, sizeof(inning_s), "end %dst", inning);      
+      snprintf(inning_s, sizeof(inning_s), "end %dst", inning);
     }
     break;
   case 2:
     if (inning_count % 2 == 0) {
-      snprintf(inning_s, sizeof(inning_s), "top %dnd", inning);      
+      snprintf(inning_s, sizeof(inning_s), "top %dnd", inning);
     } else {
-      snprintf(inning_s, sizeof(inning_s), "end %dnd", inning);      
+      snprintf(inning_s, sizeof(inning_s), "end %dnd", inning);
     }
     break;
   case 3:
     if (inning_count % 2 == 0) {
-      snprintf(inning_s, sizeof(inning_s), "top %drd", inning);      
+      snprintf(inning_s, sizeof(inning_s), "top %drd", inning);
     } else {
-      snprintf(inning_s, sizeof(inning_s), "end %drd", inning);      
+      snprintf(inning_s, sizeof(inning_s), "end %drd", inning);
     }
     break;
   default:
     if (inning_count % 2 == 0) {
-      snprintf(inning_s, sizeof(inning_s), "top %dth", inning);      
+      snprintf(inning_s, sizeof(inning_s), "top %dth", inning);
     } else {
-      snprintf(inning_s, sizeof(inning_s), "end %dth", inning);      
+      snprintf(inning_s, sizeof(inning_s), "end %dth", inning);
     }
     break;
   }
@@ -85,7 +47,7 @@ static void push(int type, int count)
       strike = 0;
       out = 0;
       text_layer_set_text(timer_layer, "Time: 0h:0m");
-      update_textlayer();    
+      update_textlayer();
     }
     for (int i = 0; i < MAX_TYPE; i++)
     {
