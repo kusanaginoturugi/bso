@@ -4,9 +4,11 @@
 #define MAX_HISTORY 100
 
 #ifdef PBL_PLATFORM_APLITE
+  #define INNING_MARGIN 0
   #define TOP_MARGIN 20
 #else
-  #define TOP_MARGIN 35
+  #define INNING_MARGIN 11
+  #define TOP_MARGIN 34
 #endif
 
 static Window    *window;

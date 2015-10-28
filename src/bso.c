@@ -281,7 +281,7 @@ static void window_load(Window *window) {
   Layer *window_layer = window_get_root_layer(window);
   GRect bounds = layer_get_bounds(window_layer);
 
-  inning_layer = text_layer_create((GRect) { .origin = { 0, 0 }, .size = { bounds.size.w, 20 } });
+  inning_layer = text_layer_create((GRect) { .origin = { 0, INNING_MARGIN }, .size = { bounds.size.w, 20 } });
   text_layer_set_text(inning_layer, "");
   text_layer_set_text_alignment(inning_layer, GTextAlignmentCenter);
   text_layer_set_font(inning_layer, fonts_get_system_font(FONT_KEY_GOTHIC_18_BOLD));
