@@ -6,7 +6,7 @@
 #ifdef PBL_PLATFORM_APLITE
   #define TOP_MARGIN 20
 #else
-  #define TOP_MARGIN 20
+  #define TOP_MARGIN 35
 #endif
 
 static Window    *window;
